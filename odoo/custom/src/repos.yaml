@@ -1,0 +1,64 @@
+# See https://github.com/Tecnativa/doodba#optodoocustomsrcreposyaml
+./odoo:
+  defaults:
+    # Shallow repositories ($DEPTH_DEFAULT=1) are faster & thinner
+    # You may need a bigger depth when merging PRs (use $DEPTH_MERGE
+    # for a sane value of 100 commits)
+    depth: $DEPTH_DEFAULT
+  remotes:
+    origin: https://github.com/Spearhead-Odoo/odoo.git
+  target: origin $ODOO_VERSION
+  merges:
+    - origin $ODOO_VERSION
+    # Example of a merge of the PR with the number <PR>
+    # - oca refs/pull/<PR>/head
+./enterprise:
+  defaults:
+    depth: $DEPTH_DEFAULT
+  remotes:
+    origin: https://$GIT_TOKEN@github.com/Spearhead-Odoo/enterprise.git
+  target: origin $ODOO_VERSION
+  merges:
+    - origin $ODOO_VERSION
+# repositorios propios
+
+./app_store:
+  defaults:
+    depth: $DEPTH_DEFAULT
+  remotes:
+    origin: https://$GIT_TOKEN@github.com/Spearhead-Odoo/app_store.git
+  target: origin $ODOO_VERSION
+  merges:
+    - origin $ODOO_VERSION
+./flow_scm:
+  defaults:
+    depth: $DEPTH_DEFAULT
+  remotes:
+    origin: https://$GIT_TOKEN@github.com/Spearhead-Odoo/flow_scm.git
+  target: origin $ODOO_VERSION
+  merges:
+    - origin $ODOO_VERSION
+./merp:
+  defaults:
+    depth: $DEPTH_DEFAULT
+  remotes:
+    origin: https://$GIT_TOKEN@github.com/Spearhead-Odoo/merp.git
+  target: origin $ODOO_VERSION
+  merges:
+    - origin $ODOO_VERSION
+./odoo_generic_addons:
+  defaults:
+    depth: $DEPTH_DEFAULT
+  remotes:
+    origin: https://$GIT_TOKEN@github.com/Spearhead-Odoo/odoo_generic_addons.git
+  target: origin $ODOO_VERSION
+  merges:
+    - origin $ODOO_VERSION
+./theme_prime:
+  defaults:
+    depth: $DEPTH_DEFAULT
+  remotes:
+    origin: https://$GIT_TOKEN@github.com/Spearhead-Odoo/theme_prime.git
+  target: origin $ODOO_VERSION
+  merges:
+    - origin $ODOO_VERSION

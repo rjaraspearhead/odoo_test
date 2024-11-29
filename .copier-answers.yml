@@ -1,0 +1,41 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: v5.1.0-185-g4cfca0b
+_src_path: gh:Spearhead-Odoo/doodba-copier-template
+cidr_whitelist: null
+docker_registry: registry.gitlab.com
+domains_prod:
+  - hosts:
+      - example.com
+domains_test:
+  - hosts:
+      - test.example.com
+enable_traefik_dashboard: false
+gitlab_url: ""
+limit_memory_hard: 2684354560
+limit_memory_soft: 2147483648
+max_cron_threads: 2
+odoo_db_maxconn: 100
+odoo_db_name: myproject-odoo
+odoo_dbfilter: ^%d
+odoo_initial_lang: es_EC
+odoo_listdb: false
+odoo_oci_image: registry.gitlab.com/spearhead-odoo/odoo
+odoo_proxy: traefik
+odoo_version: 18.0
+paths_without_crawlers:
+  - /web
+  - /website/info
+pg_host: db
+postgres_dbname: myproject-odoo
+postgres_exposed_port: 5432
+postgres_username: odoo
+postgres_version: ""
+project_author: Spearhead
+project_license: LGPL-3.0-or-later
+project_name: myproject-odoo
+server_wide_modules: base,web
+smtp_default_from: ""
+smtp_relay_host: ""
+ssl_email: clopez@spearhead.global
+traefik_version: 3
+workers: 4

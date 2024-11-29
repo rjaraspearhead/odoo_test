@@ -1,0 +1,41 @@
+version: "2.4"
+
+services:
+  odoo:
+    image: registry.gitlab.com/spearhead-odoo/odoo:myproject-odoo-18.0
+    build:
+      context: ./odoo
+      args:
+        DB_VERSION: "latest"
+        ODOO_VERSION: "18.0"
+        UID: "${UID:-1000}"
+        GID: "${GID:-1000}"
+        GIT_TOKEN: "${GIT_TOKEN}"
+        DEFAULT_REPO_PATTERN: "https://github.com/Spearhead-Odoo/{}.git"
+        DEFAULT_REPO_PATTERN_ODOO: "https://github.com/Spearhead-Odoo/odoo.git"
+    environment:
+      EMAIL_FROM: ""
+      PGDATABASE: &dbname myproject-odoo
+      PGUSER: &dbuser "odoo"
+      PROXY_MODE: "true"
+      LIST_DB: "false"
+      DB_NAME: "${DB_NAME-myproject-odoo}"
+      DB_MAXCONN: "${DB_MAXCONN-100}"
+      WORKERS: "${WORKERS-4}"
+      MAX_CRON_THREADS: "${MAX_CRON_THREADS-2}"
+      LIMIT_MEMORY_HARD: "${LIMIT_MEMORY_HARD-2684354560}"
+      LIMIT_MEMORY_SOFT: "${LIMIT_MEMORY_SOFT-2147483648}"
+      SERVER_WIDE_MODULES: "${SERVER_WIDE_MODULES-base,web}"
+      DEFAULT_REPO_PATTERN: "https://github.com/Spearhead-Odoo/{}.git"
+      DEFAULT_REPO_PATTERN_ODOO: "https://github.com/Spearhead-Odoo/odoo.git"
+    tty: true
+    volumes:
+      - filestore:/var/lib/odoo:z
+    labels:
+      traefik.backend.buffering.retryExpression: IsNetworkError() && Attempts() < 5
+      traefik.docker.network: "inverseproxy_shared"
+      traefik.frontend.passHostHeader: "true"
+      traefik.port: "8069"
+
+  smtpfake:
+    image: docker.io/mailhog/mailhog

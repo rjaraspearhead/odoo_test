@@ -1,0 +1,14 @@
+git+https://github.com/OCA/openupgradelib.git@master
+unicodecsv
+unidecode
+jingtrang
+coverage
+google-auth==2.26.1
+pysftp==0.2.9
+
+cryptography==36.0.0
+xades==0.2.4
+xmlsig==0.1.9
+zeep==4.2.1
+numpy==1.26.4
+pandas==2.0.3
